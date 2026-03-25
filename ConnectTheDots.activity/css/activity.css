@@ -1,0 +1,144 @@
+#main-toolbar #activity-button {
+  background-image: url(../activity/activity-icon.svg);
+}
+
+#main-toolbar #undo-button {
+  background-image: url(../icons/edit-undo.svg);
+}
+
+#main-toolbar #redo-button {
+  background-image: url(../icons/edit-redo.svg);
+}
+
+#main-toolbar #clear-button {
+  background-image: url(../icons/edit-clear.svg);
+}
+
+#main-toolbar #changeColor-button {
+  background-image: url(../icons/change-color.svg);
+}
+
+#main-toolbar #drawMode-button {
+   background-image: url(../icons/draw-mode.svg);
+}
+
+#main-toolbar #numberMode-button {
+   background-image: url(../icons/number-mode.svg);
+}
+
+#main-toolbar #network-button {
+	background-image: url(../lib/sugar-web/graphics/icons/actions/zoom-home.svg);
+}
+
+#private-button {
+	background-image: url(../lib/sugar-web/graphics/icons/actions/zoom-home.svg);
+	width: 47px;
+	height: 47px;
+	margin: 4px 2px;
+	color: white;
+	color: transparent;
+	background-color: transparent;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	border: 0;
+	border-radius: 5.5px;
+}
+
+#shared-button {
+	background-image: url(../lib/sugar-web/graphics/icons/actions/zoom-neighborhood.svg);
+	width: 47px;
+	height: 47px;
+	margin: 4px 2px;
+	color: white;
+	color: transparent;
+	background-color: transparent;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	border: 0;
+	border-radius: 5.5px;
+}
+
+#grid-container {
+    display: grid;
+    /* This automatically creates as many 40px columns as will fit on the screen */
+    grid-template-columns: repeat(auto-fill, 40px);
+    width: 100vw;
+    height: 100vh;
+    align-content: start;
+    background-color: white;;
+}
+
+/* Style the invisible wrappers */
+.dot-wrapper {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Style the divs into circles */
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #8c97a7;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* We make an invisible block surrounding dot, the mouseenter event will be triggered inside this event which makes it easier to connect dots */
+.dot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers it perfectly over the dot */
+    width: 30px;  /* The Goldilocks size: small enough for diagonals, big enough for speed */
+    height: 30px;
+    background: transparent; /* Keep it invisible */
+    border-radius: 50%;
+}
+
+/* Add effects for each dot */
+.dot.active {
+  background-color: red;
+  width: 13px;
+  height: 13px;
+}
+
+#line-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* Crucial: lets clicks pass through to the dots */
+    z-index: 10; /* Ensures lines draw on top of the grid */
+}
+
+line {
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+/* Styling for the color Palette */
+.color-palette-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 4px;
+    padding: 8px;
+}
+
+.color-item {
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.color-item:hover {
+    border-color: white;
+}
